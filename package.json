@@ -1,0 +1,32 @@
+{
+  "name": "eleventy-webring",
+  "version": "1.0.0",
+  "main": "eleventy.config.js",
+  "scripts": {
+    "start": "npm run serve",
+    "clean": "npx rimraf -rf _site",
+    "serve": "npm run clean && npx @11ty/eleventy --serve",
+    "build": "npm run clean && npx @11ty/eleventy && npm run lint:build",
+    "lint": "npx prettier --write --ignore-unknown . '!_site/**/*'",
+    "lint:build": "npx prettier --write --ignore-unknown --no-config --print-width=1000 --use-tabs=true '_site/**/*'",
+    "prepare": "husky"
+  },
+  "keywords": [
+    "webring",
+    "eleventy",
+    "indieweb"
+  ],
+  "author": "beeps <hi@berly.kim>",
+  "license": "MIT",
+  "description": "Simple webring website built on Eleventy. No backend and no JavaScript required.",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0-alpha.20",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}

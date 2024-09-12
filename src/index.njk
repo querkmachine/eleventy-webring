@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ meta.webringName }}</title>
+</head>
+<body>
+  <h1>{{ meta.webringName }}</h1>
+  <p>A really rather simple webring generator built on <a href="https://11ty.dev">Eleventy</a>. No backend or JavaScript required.</p>
+
+  <h2>Sites in the ring</h2>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for item in webring %}
+      <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td><a href="{{ item.url }}">{{ item.name }}</a></td>
+      </td>
+      {%- endfor %}
+    </tbody>
+  </table>
+
+  <h2>Adding to the ring</h2>
+  <p>Add new entries to the <code>src/_data/webring.mjs</code> file. An <code>id</code>, <code>name</code> and <code>url</code> are required for all entries.</p>
+  <p><code>id</code>s must be unique, but can otherwise be whatever you want. They cannot contain forward slash characters, even URL encoded ones.</p>
+
+  <h2>Linking to the ring</h2>
+  <pre><code>&lt;a href="{{ meta.webringDomain }}"&gt;{{ meta.webringName }}&lt;/a&gt;
+&lt;a href="{{ meta.webringDomain }}/&lt;YOUR-ID-HERE&gt;/prev"&gt;Previous&lt;/a&gt;
+&lt;a href="{{ meta.webringDomain }}/&lt;YOUR-ID-HERE&gt;/next"&gt;Next&lt;/a&gt;</code></pre>
+</body>
+</html>
