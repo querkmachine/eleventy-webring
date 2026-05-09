@@ -2,6 +2,8 @@
 
 A very simple webring website and service built on [Eleventy](https://11ty.dev). Doesn't require _any_ backend services or client-side JavaScript to work. It's just HTML files all the way down.
 
+See [the Amphimorpho webring](https://noodle-r.ing) for an example in use.
+
 ## Using Eleventy Webring
 
 ### Development
