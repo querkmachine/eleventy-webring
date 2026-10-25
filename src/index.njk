@@ -13,6 +13,7 @@
   <table>
     <thead>
       <tr>
+        <th scope="col">Button</th>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">URL</th>
@@ -21,6 +22,9 @@
     <tbody>
       {%- for item in webring %}
       <tr>
+        <td>
+          {% getSiteButton item.url %}
+        </td>
         <td>{{ item.id }}</td>
         <td>{{ item.name }}</td>
         <td><a href="{{ item.url }}">{{ item.name }}</a></td>
