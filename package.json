@@ -20,7 +20,7 @@
   "license": "MIT",
   "description": "Simple webring website built on Eleventy. No backend and no JavaScript required.",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy": "^3.1.7",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
