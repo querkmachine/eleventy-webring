@@ -1,0 +1,9 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    reviewers: [querkmachine]
+    schedule:
+      interval: "cron"
+      cronjob: "0 4 * */1 6"
