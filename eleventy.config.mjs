@@ -1,3 +1,5 @@
+import Fetch from "@11ty/eleventy-fetch";
+
 import webringData from "./src/_data/webring.mjs";
 
 export default async function (eleventyConfig) {
@@ -28,7 +30,7 @@ export default async function (eleventyConfig) {
       let newIndex = currentIndex + change;
 
       // Do some checks to make sure we're not going out of bounds, looping back
-      // around to the start if we do
+      // around to the start if we do. Aka, we're going in a (web) ring!
       if (newIndex > webringData.length - 1) {
         newIndex = 0;
       } else if (newIndex < 0) {
@@ -38,6 +40,27 @@ export default async function (eleventyConfig) {
       return webringData[newIndex];
     },
   );
+
+  eleventyConfig.addAsyncShortcode("getSiteButton", async function (siteUrl) {
+    try {
+      const json = await Fetch(`${siteUrl}/.well-known/button.json`, {
+        duration: "1w", // cache result for 1 week
+        type: "json",
+      });
+
+      let button = json.buttons[0];
+
+      if (json.default) {
+        button = json.buttons.find((i) => i.id === json.default);
+      }
+
+      console.log(button);
+
+      return `<img alt="${button.alt}" src="${button.uri}">`;
+    } catch (e) {
+      return "";
+    }
+  });
 
   return {
     dir: {
